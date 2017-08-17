@@ -36,6 +36,7 @@ let createFormatContextNoChecker fileName source =
     let checkOptions = 
         checker.GetProjectOptionsFromScript(fileName, source, DateTime.Now, filterDefines source) 
         |> Async.RunSynchronously
+        |> fst
     { FileName = fileName; Source = source; ProjectOptions = checkOptions; Checker = checker }
 
 let createFormatContext fileName source projectOptions checker =
